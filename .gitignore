@@ -1,0 +1,32 @@
+# Next js
+.next/
+
+# Node modules
+node_modules/
+
+# Bower components
+bower_components/
+
+# Yarn cache
+.yarn-cache/
+
+# MacOS
+.DS_Store
+
+# IDEs and text editors
+*.sublime-workspace
+*.atom-workspace.cocoproj
+*.project
+*.sln
+*.suo
+*.vcxproj
+*.vcxproj.user
+*.workspace
+
+# Windows
+Thumbs.db
+
+# Logs and build artifacts
+logs/
+build/
+dist/
