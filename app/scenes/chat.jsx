@@ -3,6 +3,7 @@ import { useChat } from "ai/react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useRef } from "react";
 import moment from "moment";
+import { Markdown } from "../components/markdown";
 
 const ChatStyles = createGlobalStyle`
   .chat-root {
@@ -16,7 +17,7 @@ const ChatStyles = createGlobalStyle`
     flex-direction: column;
     flex: 1;
     font-size: 10pt;
-    padding: 24px
+    padding: 24px;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -28,7 +29,6 @@ const ChatStyles = createGlobalStyle`
 
   .message * {
     margin: 4px 0;
-    color: white;
   }
 
   .message .role {
@@ -38,21 +38,11 @@ const ChatStyles = createGlobalStyle`
     font-family: 'Monospace', monospace, Consolas, 'Courier New';
     font-size: 9pt;
     line-height: 1.5;
+    color: white;
   }
 
   .message .role-user {
     color: gold;
-  }
-
-  .message .response {
-    padding: 4px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-x: auto;
-    overflow-y: hidden;
-    font-family: 'Monospace', monospace, Consolas, 'Courier New';
-    font-size: 9pt;
-    line-height: 1.5;
   }
 
   .message .toolbar {
@@ -121,13 +111,13 @@ function Chat() {
     isLoading,
     stop,
   } = useChat();
-  const [stored, setStored] = useLocalStorage("main.chat.history");
+  // const [stored, setStored] = useLocalStorage("main.chat.history");
   const messagesRef = useRef();
 
-  useEffect(() => {
-    if (!stored) return;
-    setMessages(stored);
-  }, []);
+  // useEffect(() => {
+  //   if (!stored) return;
+  //   setMessages(stored);
+  // }, []);
 
   useEffect(() => {
     messagesRef.current.scrollIntoView({
@@ -135,7 +125,7 @@ function Chat() {
       block: "end",
     });
 
-    setStored(messages);
+    // setStored(messages);
   }, [messages]);
 
   return (
@@ -153,10 +143,9 @@ function Chat() {
                   {m.role}
                 </span>
               </div>
-              <pre className="response">{m.content}</pre>
+              <Markdown>{m.content}</Markdown>
               <div className="toolbar">
                 <span>{moment(m.createdAt).fromNow()}</span>
-                <a role="button">Copy</a>
               </div>
             </div>
           ))}
