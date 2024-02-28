@@ -4,7 +4,7 @@ import { useChat } from "ai/react";
 import { useEffect, useRef } from "react";
 import { Markdown } from "../components/markdown";
 import { useTranslation } from "../../i18n/client";
-import { useMoment } from "../../../moment";
+import { useMoment } from "../../hooks/useMoment";
 
 function Chat({ lang }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
