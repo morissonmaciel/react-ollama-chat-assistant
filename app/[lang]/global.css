@@ -21,6 +21,7 @@ body {
     font-family: sans-serif;
     height: 100%;
     touch-action: pan-x pan-y;
+    overscroll-behavior: none;
 }
 
 .root-view {
@@ -63,7 +64,7 @@ body {
     border-bottom: 1px solid silver;
 }
 
-.message * {
+.message > * {
     margin: 8px 0px;
 }
 
@@ -183,7 +184,7 @@ body {
         --font-size-markdown-html: 14px;
         --font-size-prompt: 16px;
 
-        --safe-area-bottom-size: 24px;
+        --safe-area-bottom-size: 28px;
     }
 }
 

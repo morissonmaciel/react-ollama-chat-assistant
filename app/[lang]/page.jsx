@@ -1,13 +1,12 @@
-"use client";
-
 import Chat from "./scenes/chat";
 
-function App() {
+async function App({ params: { lang } }) {
+
   return (
     <div className="root-view">
       {/* <NavigatorView>&nbsp;</NavigatorView> */}
       <div className="chat-view">
-        <Chat />
+        <Chat lang={lang} />
       </div>
     </div>
   );

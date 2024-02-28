@@ -1,12 +1,22 @@
+"use client";
+
 import { useChat } from "ai/react";
 import { useEffect, useRef } from "react";
-import moment from "moment";
 import { Markdown } from "../components/markdown";
+import { useTranslation } from "../../i18n/client";
+import { useMoment } from "../../../moment";
 
-function Chat() {
+function Chat({ lang }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
     useChat();
   const messagesRef = useRef();
+  const { t } = useTranslation(lang, "translation");
+  const [moment] = useMoment(lang);
+
+  const parseIntervalFromNow = (createdAt) => {
+    moment.locale(lang);
+    return moment(createdAt).fromNow();
+  };
 
   useEffect(() => {
     messagesRef.current.scrollIntoView({
@@ -25,7 +35,7 @@ function Chat() {
                 <span
                   className={`role ${m.role === "user" ? "role-user" : ""}`}
                 >
-                  {m.role}
+                  {t(m.role)}
                 </span>
               </div>
               <Markdown>{m.content}</Markdown>
@@ -40,15 +50,15 @@ function Chat() {
           <input
             className="prompt"
             type="text"
-            placeholder="Say something..."
+            placeholder={t("Say something")}
             value={input}
             onInput={handleInputChange}
             disabled={isLoading}
           />
           <input
             className="prompt-submit"
-            type="submit"
-            value={isLoading ? "Stop" : "Send"}
+            type={t("submit")}
+            value={isLoading ? t("Stop") : t("Send")}
             onClick={() => isLoading && stop()}
           />
         </form>
