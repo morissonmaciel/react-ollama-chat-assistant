@@ -1,6 +1,6 @@
 {
   "name": "Ollama Chat Assistant",
-  "short_name": "ollama-chat-assistant",
+  "short_name": "Ollama Chat",
   "start_url": "./?homescreen=1",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -18,5 +18,5 @@
       "type": "image/png"
     }
   ],
-  "service_worker": "/service-worker.js"
+  "service_worker": "/sw.js"
 }
