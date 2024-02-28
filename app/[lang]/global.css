@@ -42,7 +42,7 @@ body {
     flex-direction: column;
     flex: 1;
     background: rgb(50, 62, 68);
-    padding-bottom: calc(4 * var(--default-interface-margin));
+    padding-bottom: calc(4.5 * var(--default-interface-margin));
 }
 
 .chat-root {
@@ -116,7 +116,7 @@ body {
     justify-content: space-between;
     padding: 16px;
     background-color: #161c1e;
-    border-radius: 22px;
+    border-radius: 50px;
 
     position: fixed;
     bottom: var(--safe-area-bottom-size);
@@ -173,6 +173,13 @@ body {
 
 .markdown-html pre code {
     border-radius: 8px;
+}
+
+.markdown-html a {
+    color: rgb(209, 106, 69);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid rgb(209, 106, 69);
 }
 
 /* Media query for iPhone 12 Plus and above Retina display */
