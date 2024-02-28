@@ -1,16 +1,15 @@
 "use client";
 
-import { ChatView, RootContainer } from "./page.styled";
 import Chat from "./scenes/chat";
 
 function App() {
   return (
-    <RootContainer>
+    <div className="root-view">
       {/* <NavigatorView>&nbsp;</NavigatorView> */}
-      <ChatView>
+      <div className="chat-view">
         <Chat />
-      </ChatView>
-    </RootContainer>
+      </div>
+    </div>
   );
 }
 

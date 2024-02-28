@@ -6,21 +6,13 @@ import { Markdown } from "../components/markdown";
 function Chat() {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
     useChat();
-  // const [stored, setStored] = useLocalStorage("main.chat.history");
   const messagesRef = useRef();
-
-  // useEffect(() => {
-  //   if (!stored) return;
-  //   setMessages(stored);
-  // }, []);
 
   useEffect(() => {
     messagesRef.current.scrollIntoView({
       behaviour: "smooth",
       block: "end",
     });
-
-    // setStored(messages);
   }, [messages]);
 
   return (

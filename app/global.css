@@ -1,11 +1,13 @@
 :root {
-    --font-size-body: 16px;
     --font-size-message: 14px;
     --font-size-role: 14px;
     --font-size-toolbar: 12px;
     --font-size-prompt: 14px;
     --font-size-markdown-html: 14px;
     --font-size-pre-markdown: 14px;
+
+    --default-interface-margin: 24px;
+    --safe-area-bottom-size: 0px;
 }
 
 * {
@@ -13,25 +15,47 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html,
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    font-size: var(--font-size-body);
+    font-family: sans-serif;
+    height: 100%;
+    touch-action: pan-x pan-y;
+}
+
+.root-view {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    background: rgb(23, 23, 23);
+}
+
+.navigation-view {
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+}
+
+.chat-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: rgb(50, 62, 68);
+    padding-bottom: calc(4 * var(--default-interface-margin));
 }
 
 .chat-root {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 var(--default-interface-margin);
 }
 
 .messages-panel {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 32px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .message {
@@ -40,7 +64,7 @@ body {
 }
 
 .message * {
-    margin: 8px;
+    margin: 8px 0px;
 }
 
 .message .role {
@@ -61,7 +85,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 8px;
     font-size: var(--font-size-toolbar);
 }
 
@@ -92,6 +115,13 @@ body {
     justify-content: space-between;
     padding: 16px;
     background-color: #161c1e;
+    border-radius: 22px;
+
+    position: fixed;
+    bottom: var(--safe-area-bottom-size);
+    left: var(--default-interface-margin);
+    right: var(--default-interface-margin);
+    z-index: 1;
 }
 
 .prompt {
@@ -130,35 +160,42 @@ body {
     font-family: "Monospace", monospace;
     font-size: var(--font-size-markdown-html);
     line-height: 1.8;
-    padding: 8px;
+    padding: 4px 0px;
     color: #f1f1f2;
 }
 
 .markdown-html pre {
     overflow-x: auto;
-    overflow-y: hidden;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
 .markdown-html pre code {
-    border-radius: 4px;
-    padding: 8px;
+    border-radius: 8px;
 }
 
-.pre-markdown {
-    padding: 32px;
-    color: #f1f1f2;
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+/* Media query for iPhone 12 Plus and above Retina display */
+@media only screen and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-width: 414px) and (-webkit-min-device-pixel-ratio: 3) {
     :root {
-        --font-size-body: 18px;
-        --font-size-message: 16px;
-        --font-size-role: 16px;
-        --font-size-toolbar: 14px;
-        --font-size-prompt: 24px;
-        --font-size-markdown-html: 16px;
-        --font-size-pre-markdown: 16px;
+        --font-size-message: 14px;
+        --font-size-role: 14px;
+        --font-size-markdown-html: 14px;
+        --font-size-prompt: 16px;
+
+        --safe-area-bottom-size: 24px;
+    }
+}
+
+/* Media query for desktop browsers with Retina display */
+@media only screen and (min-device-width: 1080px) and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-width: 1240px) and (-webkit-min-device-pixel-ratio: 3) {
+    :root {
+        --font-size-message: 9pt;
+        --font-size-role: 9pt;
+        --font-size-markdown-html: 9pt;
+        --font-size-prompt: 10pt;
+
+        --safe-area-bottom-size: 16px;
     }
 }

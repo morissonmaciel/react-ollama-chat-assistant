@@ -7,7 +7,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import remarkRehype from "remark-rehype";
 
-import "highlight.js/styles/github.min.css";
+import "highlight.js/styles/github-dark.min.css";
 
 export const Markdown = ({ children }) => {
   const markdownToHTML = (markdown) => {
