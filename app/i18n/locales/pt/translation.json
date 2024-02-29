@@ -2,6 +2,8 @@
   "title": "Chat Ollama",
   "user": "Usuário",
   "assistant": "IA",
+  "Results may contain errors or misinformation": "Lembre-se: resultados podem conter erros ou informações equivocadas. Clique aqui e saiba mais.",
+  "ai disclaimer notes": "# Descrição de Cautela \nAs informações fornecidas pelo modelo de inteligência artificial são baseadas nos dados que recebeu e nos padrões que deles aprendeu. É importante lembrar que:\n - As respostas do modelo de inteligência artificial não devem ser consideradas como verdade definitiva ou absoluta, mas sim como sugestões ou possibilidades.\n - O modelo de inteligência artificial pode cometer erros ou fornecer informações incompletas, e é sua responsabilidade verificar e confirmar quaisquer informações que receber dele.\n - O modelo de inteligência artificial não tem a capacidade de espalhar intencionalmente informações falsas ou enganosas, mas pode gerar respostas incorretas ou enganosas por acaso baseadas em sua programação e nos dados que recebeu.\n - A utilização deste modelo de inteligência artificial é a seu risco, e você deve exercer cautela e raciocínio crítico ao utilizar seus resultados.",
   "Say something": "Diga alguma coisa",
   "Send": "Enviar",
   "Stop": "Parar"

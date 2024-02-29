@@ -1,4 +1,4 @@
-import Chat from "./scenes/chat";
+import Chat from "./views/chat";
 
 async function App({ params: { lang } }) {
 

@@ -189,6 +189,20 @@ body {
     margin-left: 0;
 }
 
+.font-footnote {
+    font-family: 'Monospace', monospace;
+    font-size: var(--font-size-toolbar);
+}
+
+.hyperlink-onhover {
+    cursor: pointer;
+}
+
+.hyperlink-onhover:hover {
+    color: rgb(209, 106, 69);
+    text-decoration: underline;
+}
+
 @import "coloring.css";
 @import "animations.css";
 @import "scrollbars.css";

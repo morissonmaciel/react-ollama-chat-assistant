@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Markdown } from "../components/markdown";
 import { useTranslation } from "../../i18n/client";
 import { useMoment } from "../../hooks/useMoment";
@@ -9,11 +9,13 @@ import { AiOutlineClockCircle as ClockCircleIcon } from "react-icons/ai";
 import { IoStopCircleOutline as StopCircleIcon } from "react-icons/io5";
 import { HiOutlinePaperAirplane as StartPaperIcon } from "react-icons/hi2";
 import { RiSparkling2Fill as SparklesIcon } from "react-icons/ri";
+import Modal from "./modal";
 
 function Chat({ lang }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
     useChat();
   const messagesRef = useRef();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation(lang, "translation");
   const [moment] = useMoment(lang);
 
@@ -46,6 +48,22 @@ function Chat({ lang }) {
                 )}
               </span>
               <Markdown>{m.content}</Markdown>
+              {m.role !== "user" && (
+                <>
+                  <a
+                    className="aligned-mid color-fg-text-50 font-footnote hyperlink-onhover"
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    {t("Results may contain errors or misinformation")}
+                  </a>
+                  <Modal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                  >
+                    <Markdown>{t("ai disclaimer notes")}</Markdown>
+                  </Modal>
+                </>
+              )}
               <div className="toolbar">
                 <span className="aligned-mid child-spacing-min color-fg-text-50">
                   <ClockCircleIcon />

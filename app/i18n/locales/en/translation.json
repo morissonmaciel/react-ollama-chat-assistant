@@ -2,6 +2,8 @@
   "title": "Ollama Chat",
   "user": "User",
   "assistant": "AI",
+  "Results may contain errors or misinformation": "Remember: results may contain errors or misinformation. For more information, click here.",
+  "ai disclaimer notes": "# Disclaimer \nThe information provided by this AI model is based on the data it has been given and the patterns it has learned from that data. It is important to note that:\n  - The AI model's answers should not be considered as definitive or absolute truth, but rather as suggestions or possibilities.\n  - The AI model may make errors or provide incomplete information, and it is your responsibility to fact-check and verify any information you receive from it.\n  - The AI model does not have the ability to intentionally spread misinformation or falsehoods, but it can unintentionally generate incorrect or misleading responses based on its programming and the data it has been given.\n  - The use of this AI model is at your own risk, and you should exercise caution and critical thinking when using its outputs.",
   "Say something": "Say something",
   "Send": "Send",
   "Stop": "Stop"
