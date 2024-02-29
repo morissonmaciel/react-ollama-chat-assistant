@@ -40,10 +40,44 @@
 }
 
 /* Safari */
-.ui-scrollbars-minimal::-webkit-scrollbar-track {
-    background-color: transparent;
+.ui-scrollbars-minimal::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Slightly darker thumb */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darker thumb on hover */
+}
+
+/* Safari Mobile */
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Slightly darker thumb */
+    border-radius: 5px;
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darker thumb on hover */
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-track-piece:first-child {
+    -webkit-appearance: none;
 }
 
 .ui-scrollbars-minimal::-webkit-scrollbar-thumb:focus {
     outline: none;
+}
+
+/* Hide touch callout in Safari Mobile */
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb:-webkit-appearance-region {
+    -webkit-touch-callout: none;
 }
