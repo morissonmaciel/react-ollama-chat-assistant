@@ -1,0 +1,49 @@
+/* Common styles */
+.ui-scrollbars-minimal {
+    -ms-overflow-style: scrollbar;
+    /* For IE and Edge */
+}
+
+/* Webkit-based browsers */
+.ui-scrollbars-minimal::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Slightly darker thumb */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darker thumb on hover */
+}
+
+/* Firefox */
+.ui-scrollbars-minimal::-moz-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.ui-scrollbars-minimal::-moz-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Slightly darker thumb */
+    border-radius: 5px;
+}
+
+.ui-scrollbars-minimal::-moz-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darker thumb on hover */
+}
+
+/* Safari */
+.ui-scrollbars-minimal::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.ui-scrollbars-minimal::-webkit-scrollbar-thumb:focus {
+    outline: none;
+}

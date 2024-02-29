@@ -42,7 +42,6 @@ body {
     flex-direction: column;
     flex: 1;
     background: rgb(50, 62, 68);
-    padding-bottom: calc(4.5 * var(--default-interface-margin));
 }
 
 .chat-root {
@@ -51,6 +50,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0 var(--default-interface-margin);
+    margin-bottom: calc(4.5 * var(--default-interface-margin));
 }
 
 .messages-panel {
@@ -69,11 +69,9 @@ body {
 }
 
 .message .role {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 8px;
-    border-radius: 0.3em;
-    font-family: "Monospace", monospace, Consolas, "Courier New";
+    font-family: "Monospace", monospace;
     font-size: var(--font-size-role);
+    font-weight: bold;
     line-height: 1.5;
     color: white;
 }
@@ -89,34 +87,13 @@ body {
     font-size: var(--font-size-toolbar);
 }
 
-.message .toolbar :first-child {
-    flex: 1;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.message .toolbar a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-transform: lowercase;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 4px;
-    border-radius: 4px;
-    color: rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-}
-
-.message .toolbar a:hover {
-    background: #f1f1f2;
-}
-
 .prompt-form {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 16px;
+    align-items: center;
+    padding: 14px;
     background-color: #161c1e;
-    border-radius: 50px;
+    border-radius: 12px;
 
     position: fixed;
     bottom: var(--safe-area-bottom-size);
@@ -136,11 +113,14 @@ body {
 }
 
 .prompt-submit {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
     background-color: #161c1e;
     appearance: none;
     border: none;
     font-weight: 400;
-    font-size: var(--font-size-prompt);
+    /* font-size: var(--font-size-prompt); */
     color: white;
 }
 
@@ -182,6 +162,36 @@ body {
     border-bottom: 1px solid rgb(209, 106, 69);
 }
 
+.icon-size-md {
+    font-size: 24px;
+}
+
+.aligned-mid {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.child-spacing-min > * {
+    margin: 0 4px;
+}
+
+.child-spacing-min :first-child {
+    margin-left: 0;
+}
+
+.child-spacing-md > * {
+    margin: 0 8px;
+}
+
+.child-spacing-md :first-child {
+    margin-left: 0;
+}
+
+@import "coloring.css";
+@import "animations.css";
+@import "scrollbars.css";
+
 /* Media query for iPhone 12 Plus and above Retina display */
 @media only screen and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 2),
     only screen and (min-device-width: 414px) and (-webkit-min-device-pixel-ratio: 3) {
@@ -202,7 +212,7 @@ body {
         --font-size-message: 9pt;
         --font-size-role: 9pt;
         --font-size-markdown-html: 9pt;
-        --font-size-prompt: 10pt;
+        --font-size-prompt: 14px;
 
         --safe-area-bottom-size: 16px;
     }

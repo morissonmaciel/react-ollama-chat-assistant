@@ -5,6 +5,10 @@ import { useEffect, useRef } from "react";
 import { Markdown } from "../components/markdown";
 import { useTranslation } from "../../i18n/client";
 import { useMoment } from "../../hooks/useMoment";
+import { AiOutlineClockCircle as ClockCircleIcon } from "react-icons/ai";
+import { IoStopCircleOutline as StopCircleIcon } from "react-icons/io5";
+import { HiOutlinePaperAirplane as StartPaperIcon } from "react-icons/hi2";
+import { RiSparkling2Fill as SparklesIcon } from "react-icons/ri";
 
 function Chat({ lang }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
@@ -27,20 +31,26 @@ function Chat({ lang }) {
 
   return (
     <>
-      <div className="chat-root">
+      <div className="chat-root ui-scrollbars-minimal">
         <div className="messages-panel" ref={messagesRef}>
           {messages.map((m) => (
             <div key={m.id} className="message">
-              <div>
-                <span
-                  className={`role ${m.role === "user" ? "role-user" : ""}`}
-                >
-                  {t(m.role)}
-                </span>
-              </div>
+              <span
+                className={`align-mid child-spacing-min ${
+                  m.role === "user" ? "role role-user" : "role"
+                }`}
+              >
+                <span>{t(m.role)}</span>
+                {m.role !== "user" && (
+                  <SparklesIcon className="anim-pulsing fg-dim-accent-blue" />
+                )}
+              </span>
               <Markdown>{m.content}</Markdown>
               <div className="toolbar">
-                <span>{moment(m.createdAt).fromNow()}</span>
+                <span className="aligned-mid child-spacing-min color-fg-text-50">
+                  <ClockCircleIcon />
+                  {moment(m.createdAt).fromNow()}
+                </span>
               </div>
             </div>
           ))}
@@ -55,12 +65,13 @@ function Chat({ lang }) {
             onInput={handleInputChange}
             disabled={isLoading}
           />
-          <input
-            className="prompt-submit"
-            type={t("submit")}
-            value={isLoading ? t("Stop") : t("Send")}
-            onClick={() => isLoading && stop()}
-          />
+          <a className="prompt-submit" type="submit" behaviour="button">
+            {isLoading ? (
+              <StopCircleIcon className="icon-size-md" title={t("Stop")} />
+            ) : (
+              <StartPaperIcon className="icon-size-md" title={t("Send")} />
+            )}
+          </a>
         </form>
       </div>
     </>
