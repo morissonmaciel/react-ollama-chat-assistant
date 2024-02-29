@@ -1,7 +1,7 @@
 :root {
     --font-size-message: 14px;
     --font-size-role: 14px;
-    --font-size-toolbar: 12px;
+    --font-size-toolbar: 10px;
     --font-size-prompt: 14px;
     --font-size-markdown-html: 14px;
     --font-size-pre-markdown: 14px;
@@ -84,6 +84,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-family: 'Monospace', monospace;
     font-size: var(--font-size-toolbar);
 }
 
