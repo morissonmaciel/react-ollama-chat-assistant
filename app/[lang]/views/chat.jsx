@@ -15,6 +15,7 @@ function Chat({ lang }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
     useChat();
   const messagesRef = useRef();
+  const promptRef = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation(lang, "translation");
   const [moment] = useMoment(lang);
@@ -23,6 +24,23 @@ function Chat({ lang }) {
     moment.locale(lang);
     return moment(createdAt).fromNow();
   };
+
+  const handleTextAreaInputChange = (event) => {
+    event.target.parentNode.dataset.replicatedValue = event.target.value
+    handleInputChange(event);
+  }
+
+  const handleTextAreaKeyDown = (event) => {
+    if (event.key === 'Enter' && event.shiftKey) {
+      handleFormSubmit(event);
+    }
+  };
+
+  const handleFormSubmit = (event) => {
+    handleSubmit(event);
+    promptRef.current.value = "";
+    promptRef.current.parentNode.dataset.replicatedValue = promptRef.current.value;
+  }
 
   useEffect(() => {
     messagesRef.current.scrollIntoView({
@@ -74,16 +92,23 @@ function Chat({ lang }) {
           ))}
         </div>
 
-        <form className="prompt-form" onSubmit={handleSubmit}>
-          <input
-            className="prompt"
-            type="text"
-            placeholder={t("Say something")}
-            value={input}
-            onInput={handleInputChange}
-            disabled={isLoading}
-          />
-          <a className="prompt-submit" type="submit" behaviour="button">
+        <form className="prompt-form" onSubmit={handleFormSubmit}>
+          <div className="prompt-wrap">
+            <textarea 
+              ref={promptRef}
+              className="prompt"
+              placeholder={t("Say something")}
+              value={input}
+              onInput={handleTextAreaInputChange}
+              onKeyDown={handleTextAreaKeyDown}
+              disabled={isLoading}
+            />
+          </div>
+          <a 
+            className="prompt-submit" 
+            type="submit" 
+            behaviour="button" 
+            onClick={(e) => isLoading ? stop(e) : handleFormSubmit(e)}>
             {isLoading ? (
               <StopCircleIcon className="icon-size-md" title={t("Stop")} />
             ) : (
