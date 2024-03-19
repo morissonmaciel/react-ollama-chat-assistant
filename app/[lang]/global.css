@@ -103,6 +103,37 @@ body {
     z-index: 1;
 }
 
+[data-loading="no-loading"] {
+    border: 3px solid transparent;
+}
+
+[data-loading="is-loading"] {
+    border: 3px solid transparent;
+    animation: colorChange 5s infinite;
+}
+
+@keyframes colorChange {
+    0% {
+        border-color: transparent;
+    }
+
+    25% {
+        border-color: rgb(209, 106, 69);
+    }
+
+    50% {
+        border-color: lightblue;
+    }
+
+    75% {
+        border-color: rgb(209, 106, 69);
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
 .prompt-wrap {
     display: grid;
     flex: 1;

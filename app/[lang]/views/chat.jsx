@@ -92,7 +92,10 @@ function Chat({ lang }) {
           ))}
         </div>
 
-        <form className="prompt-form" onSubmit={handleFormSubmit}>
+        <form 
+          className={`prompt-form`} 
+          data-loading={isLoading ? 'is-loading' : 'no-loading'}
+          onSubmit={handleFormSubmit}>
           <div className="prompt-wrap">
             <textarea 
               ref={promptRef}
